@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.Api", "Blockchai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.Core", "Blockchain.Core\Blockchain.Core.csproj", "{F469FEDC-904B-4C14-8577-4A3194EF0FE1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.Utilities", "Blockchain.Utilities\Blockchain.Utilities.csproj", "{F18359C4-0FE6-468A-9BF2-47CA25983656}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{F469FEDC-904B-4C14-8577-4A3194EF0FE1}.Release|x64.Build.0 = Release|Any CPU
 		{F469FEDC-904B-4C14-8577-4A3194EF0FE1}.Release|x86.ActiveCfg = Release|Any CPU
 		{F469FEDC-904B-4C14-8577-4A3194EF0FE1}.Release|x86.Build.0 = Release|Any CPU
+		{F18359C4-0FE6-468A-9BF2-47CA25983656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F18359C4-0FE6-468A-9BF2-47CA25983656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F18359C4-0FE6-468A-9BF2-47CA25983656}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F18359C4-0FE6-468A-9BF2-47CA25983656}.Debug|x64.Build.0 = Debug|Any CPU
+		{F18359C4-0FE6-468A-9BF2-47CA25983656}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F18359C4-0FE6-468A-9BF2-47CA25983656}.Debug|x86.Build.0 = Debug|Any CPU
+		{F18359C4-0FE6-468A-9BF2-47CA25983656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F18359C4-0FE6-468A-9BF2-47CA25983656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F18359C4-0FE6-468A-9BF2-47CA25983656}.Release|x64.ActiveCfg = Release|Any CPU
+		{F18359C4-0FE6-468A-9BF2-47CA25983656}.Release|x64.Build.0 = Release|Any CPU
+		{F18359C4-0FE6-468A-9BF2-47CA25983656}.Release|x86.ActiveCfg = Release|Any CPU
+		{F18359C4-0FE6-468A-9BF2-47CA25983656}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

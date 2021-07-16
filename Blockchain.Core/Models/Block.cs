@@ -12,6 +12,7 @@ namespace Blockchain.Core.Models
         public string PreviousHash { get; set; }
         public string HashOfBlock { get; set; }
         public DateTime TimeStamp { get; set; }
+        public int Nonce { get; set; }
         public List<Transaction> Transactions { get; set; }
 
         public override string ToString()
@@ -21,6 +22,7 @@ namespace Blockchain.Core.Models
             builder.Append(Id);
             builder.Append(PreviousHash);
             builder.Append(TimeStamp.ToString());
+            builder.Append(Nonce);
 
             Transactions.ForEach((trx) => builder.Append(trx));
 

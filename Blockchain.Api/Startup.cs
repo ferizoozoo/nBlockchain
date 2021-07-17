@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
+
 namespace Blockchain.Api
 {
     public class Startup
@@ -32,6 +33,7 @@ namespace Blockchain.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Blockchain.Api", Version = "v1" });
             });
+            services.AddSingleton<Blockchain.Core.Blockchain>(new Blockchain.Core.Blockchain());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

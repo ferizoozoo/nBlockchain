@@ -16,6 +16,7 @@ namespace Blockchain.Core
 
         public int NodeId { get; set; }
         private List<Block> _chain;
+        public List<Block> Chain { get; }
         private List<Transaction> _memPool;
         private List<Node> _nodes;
         private int _proofOfWork = 1;

@@ -25,5 +25,12 @@ namespace Blockchain.Api.Controllers
         {
             return _blockchain.Chain;
         }
+
+        [HttpPost("addTransaction")]
+        public Transaction AddTransaction([FromBody]Transaction newTrx)
+        {
+            _blockchain.AddTransaction(newTrx);
+            return newTrx;
+        }
     }
 }

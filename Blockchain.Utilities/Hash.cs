@@ -8,13 +8,19 @@ namespace Blockchain.Utilities
     {
         public static string CreateHash(string data)
         {
-            if (!string.IsNullOrEmpty(data))
-                return string.Empty;
+            StringBuilder Sb = new StringBuilder();
 
-            var dataBytes = Encoding.Unicode.GetBytes(data);
+            using (var hash = SHA256.Create())            
+            {
+                Encoding enc = Encoding.UTF8;
+                Byte[] result = hash.ComputeHash(enc.GetBytes(data));
 
-            var sha256 = SHA256.Create();
-            return sha256.ComputeHash(dataBytes).ToString();
+                foreach (Byte b in result)
+                    Sb.Append(b.ToString("x2"));
+            }
+
+            return Sb.ToString();
+
         }
     }
 }

@@ -15,11 +15,12 @@ namespace Blockchain.Core
         private readonly object _lock = new object();
 
         public int NodeId { get; set; }
-        private List<Block> _chain;
-        public List<Block> Chain { get; }
-        private List<Transaction> _memPool;
-        private List<Node> _nodes;
-        private int _proofOfWork = 1;
+        private List<Block> _chain = new List<Block>();
+        public List<Block> Chain => _chain;
+        private List<Transaction> _memPool = new List<Transaction>();
+        private List<Node> _nodes = new List<Node>();
+        public List<Node> Nodes { get { return _nodes; }}
+        private int _proofOfWork = 0;
         private Block _lastBlock => _chain[_chain.Count - 1];
 
         public Blockchain()
@@ -46,12 +47,14 @@ namespace Blockchain.Core
             return true;
         }
 
-        public void AddTransaction(Transaction trx)
+        public Transaction AddTransaction(Transaction trx)
         {
             lock (_lock)
             {
                 _memPool.Add(trx);
             }
+
+            return trx;
         }
 
         public void AddBlock(Block block)
@@ -78,16 +81,15 @@ namespace Blockchain.Core
 
         public Block POW(Block block)
         {
-            var hashOfThisBlock = Hash.CreateHash(block.ToString());
-
             // Set the correct proofOfWork before working with it
             SetValidPOW();
             var zerosInFrontOfHash = String.Concat(Enumerable.Repeat("0", _proofOfWork));
 
-            while (!hashOfThisBlock.StartsWith(zerosInFrontOfHash))
+            while (!block.HashOfBlock.StartsWith(zerosInFrontOfHash))
             {
                 block.Nonce += 1;
-                hashOfThisBlock = Hash.CreateHash(block.ToString());
+                block.HashOfBlock = Hash.CreateHash(block.ToString());
+                zerosInFrontOfHash = String.Concat(Enumerable.Repeat("0", _proofOfWork));
             }
 
             return block;
@@ -133,8 +135,8 @@ namespace Blockchain.Core
             // Add reward transaction
             var rewardTransaction = new Transaction
             {
-                Sender = NodeId.ToString(),
-                Recipient = null,
+                Sender = "0",
+                Recipient = NodeId.ToString(),
                 Amount = 1
             };
             AddTransaction(rewardTransaction);
@@ -151,7 +153,7 @@ namespace Blockchain.Core
 
             // Mine the correct block with proper nonce by using the POW algorithm
             var correctBlock = POW(newBlock);
-            _chain.Add(correctBlock);
+            AddBlock(correctBlock);
 
             return correctBlock;
         }
